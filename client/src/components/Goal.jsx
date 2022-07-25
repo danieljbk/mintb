@@ -4,12 +4,12 @@ import FlagImage from '../images/flag.png';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const Goal = () => {
+const Goal = ({ id }) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <img src={FlagImage} className='div-image'></img>
       <TextField
-        id='input-with-sx'
+        id={id}
         variant='standard'
         sx={{ marginLeft: '1vw' }}
         fullWidth

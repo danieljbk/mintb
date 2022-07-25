@@ -8,16 +8,17 @@ import TimeBox from './TimeBox';
 import AppBar from './AppBar';
 
 import Box from '@mui/material/Box';
+
 const Content = ({ setOpen, setAlertContent }) => {
   return (
     <Box id='edit-schedule'>
       <AppBar setOpen={setOpen} setAlertContent={setAlertContent}></AppBar>
       <ContentHolder name='GOALS'>
-        <Goal></Goal>
+        <Goal id='goalOne'></Goal>
         <p></p>
-        <Goal></Goal>
+        <Goal id='goalTwo'></Goal>
         <p></p>
-        <Goal></Goal>
+        <Goal id='goalThree'></Goal>
       </ContentHolder>
       <ContentHolder name='NOTES'>
         <Note></Note>

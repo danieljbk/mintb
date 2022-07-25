@@ -3,10 +3,14 @@ import DateSelector from './DateSelector';
 import ExitImage from '../images/exit.png';
 import UploadImage from '../images/upload.png';
 
+import savePlan from '../actions/savePlan';
+
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
 const Header = ({ setOpen, setAlertContent }) => {
+  const [dateValue, setDateValue] = React.useState(new Date());
+
   return (
     <Box
       sx={{
@@ -40,7 +44,10 @@ const Header = ({ setOpen, setAlertContent }) => {
           justifyContent: 'center',
         }}
       >
-        <DateSelector></DateSelector>
+        <DateSelector
+          dateValue={dateValue}
+          setDateValue={setDateValue}
+        ></DateSelector>
       </Box>
       <Box
         sx={{
@@ -51,8 +58,12 @@ const Header = ({ setOpen, setAlertContent }) => {
       >
         <IconButton
           onClick={() => {
-            setAlertContent('Saved!');
-            setOpen(true);
+            if (savePlan(dateValue)) {
+              setAlertContent('Saved!');
+              setOpen(true);
+            } else {
+              console.log('Save failed.');
+            }
           }}
         >
           <img className='header-image' src={UploadImage}></img>

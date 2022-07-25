@@ -5,15 +5,13 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const DateSelector = () => {
-  const [value, setValue] = React.useState(new Date());
-
+const DateSelector = ({ dateValue, setDateValue }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
+        value={dateValue}
+        onChange={(newDateValue) => {
+          setDateValue(newDateValue);
         }}
         renderInput={(params) => <TextField {...params} />}
       />

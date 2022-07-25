@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
 
 const planSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: { type: String, required: true },
   content: {
-    goals: {
-      goalOne: String,
-      goalTwo: String,
-      goalThree: String,
-    },
+    goals: [String],
     notes: String,
-    timebox: [String],
+    timeBox: [String],
   },
 });
 
