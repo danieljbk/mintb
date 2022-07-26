@@ -11,8 +11,8 @@ import AppBar from './AppBar';
 import Box from '@mui/material/Box';
 
 const Content = ({ setOpen, setAlertContent }) => {
-  const serverUrl = 'https://mintb.herokuapp.com/plan/';
-  // const serverUrl = 'http://localhost:3001/plan/';
+  const serverUrl = 'https://mintb.herokuapp.com/api/plan/';
+  // const serverUrl = 'http://localhost:3001/api/plan/';
 
   // EditSchedule -> AppBar -> DateSelector
   const [dateValue, setDateValue] = useState(new Date());
@@ -21,7 +21,7 @@ const Content = ({ setOpen, setAlertContent }) => {
   const [notesValue, setNotesValue] = useState('');
   const [timeBox, setTimeBox] = useState([]);
 
-  // fetch plan info every time dateValue changes
+  // fetch plan info if user selects different date
   useEffect(() => {
     axios
       .get(serverUrl, {

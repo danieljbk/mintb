@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const savePlan = async (dateValue) => {
-  const serverUrl = 'https://mintb.herokuapp.com/plan/';
-  // const serverUrl = 'http://localhost:3001/plan/';
+  const serverUrl = 'https://mintb.herokuapp.com/api/plan/';
+  // const serverUrl = 'http://localhost:3001/api/plan/';
 
   const timeBox = [];
 

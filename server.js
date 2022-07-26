@@ -24,11 +24,10 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 } else {
-  // the __dirname is the current directory from where the script is running
   app.use(express.static(__dirname));
-  // send the user to index html page in spite of the url
+
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client/public/index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
   });
 }
 
@@ -37,7 +36,7 @@ app.use(express.urlencoded({ limit: '1mb', extended: true })); // allow bigger f
 app.use(cors({ origin: '*' }));
 
 import planRouter from './src/routes/plan.js';
-app.use('/plan/', planRouter);
+app.use('/api/plan', planRouter);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
