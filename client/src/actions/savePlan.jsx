@@ -9,11 +9,12 @@ const savePlan = async (dateValue) => {
   for (let time = 5; time <= 11; time++) {
     timeBox.push(document.getElementById(time + 'am').value);
   }
-  for (let time = 0; time <= 12; time++) {
+  for (let time = 0; time <= 11; time++) {
     timeBox.push(
       document.getElementById((time === 0 ? 12 : time) + 'pm').value
     );
   }
+  timeBox.push(document.getElementById(12 + 'am').value);
 
   try {
     await axios.put(serverUrl, {
@@ -25,9 +26,9 @@ const savePlan = async (dateValue) => {
         dateValue.getDate(),
       content: {
         goals: [
-          document.getElementById('goalOne').value,
-          document.getElementById('goalTwo').value,
-          document.getElementById('goalThree').value,
+          document.getElementById('goal-0').value,
+          document.getElementById('goal-1').value,
+          document.getElementById('goal-2').value,
         ],
         notes: document.getElementById('note').value,
         timeBox,

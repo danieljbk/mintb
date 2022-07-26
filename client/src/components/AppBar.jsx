@@ -8,9 +8,7 @@ import savePlan from '../actions/savePlan';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
-const Header = ({ setOpen, setAlertContent }) => {
-  const [dateValue, setDateValue] = React.useState(new Date());
-
+const Header = ({ setOpen, setAlertContent, dateValue, setDateValue }) => {
   return (
     <Box
       sx={{

@@ -28,6 +28,9 @@ text {
   height: 4vh;
 }
 
-.hour {
+.number {
   font-size: 18px;
+}
+.letter {
+  font-size: 12px;
 }

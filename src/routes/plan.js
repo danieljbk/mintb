@@ -4,11 +4,40 @@ const router = express.Router();
 import Plan from '../models/plan.js';
 
 router.get('/', async (req, res) => {
-  const date = req.params.date;
+  const date = req.query.date;
   try {
     const plan = await Plan.findOne({ date });
     if (!plan) {
-      return res.status(400).send();
+      const emptyPlan = {
+        date,
+        content: {
+          goals: ['', '', ''],
+          notes: '',
+          timeBox: [
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+          ],
+        },
+      };
+      return res.status(201).send(emptyPlan);
     }
     res.status(201).send(plan);
   } catch (err) {
