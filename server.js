@@ -15,6 +15,13 @@ db.once('open', () => {
   console.log('Connected to database');
 });
 
+app.use(express.json({ limit: '1mb' })); // allow bigger file transfers
+app.use(express.urlencoded({ limit: '1mb', extended: true })); // allow bigger file transfers
+app.use(cors({ origin: '*' }));
+
+import planRouter from './src/routes/plan.js';
+app.use('/api/plan', planRouter);
+
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
@@ -23,20 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-} else {
-  app.use(express.static(__dirname));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
-  });
 }
-
-app.use(express.json({ limit: '1mb' })); // allow bigger file transfers
-app.use(express.urlencoded({ limit: '1mb', extended: true })); // allow bigger file transfers
-app.use(cors({ origin: '*' }));
-
-import planRouter from './src/routes/plan.js';
-app.use('/api/plan', planRouter);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
